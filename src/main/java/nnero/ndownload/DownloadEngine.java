@@ -22,7 +22,7 @@ import java.lang.reflect.InvocationTargetException;
  * <p>
  * ************************************************
  */
-public class DownloadEngine<T extends DownloadTask> {
+public class DownloadEngine<T extends DownloadTask> extends Thread {
 
     public static final int MODE_FETCH = 1;
     public static final int MODE_SET = 2;
@@ -91,8 +91,10 @@ public class DownloadEngine<T extends DownloadTask> {
 
     /**
      * start engine
+     *
      */
-    public void start(){
+    @Override
+    public void run(){
         switch (mMode){
         case MODE_SET:
             modeSet();
